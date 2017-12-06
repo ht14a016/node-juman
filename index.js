@@ -18,9 +18,9 @@ client.on('data', chank => {
 });
 
 module.exports = {
-    setup: (HOST, PORT) => new Promise((resolve, reject) => {
+    setup: (HOST, PORT, OPT = ['-e2']) => new Promise((resolve, reject) => {
         client.connect(PORT, HOST, () => {
-            client.write('RUN -e2\n');
+            client.write(`RUN ${OPT.join(' ')}\n`);
             resolve();
         });
     }),
