@@ -11,10 +11,11 @@ client.on('data', chank => {
     tempstr += d;
     if (d.includes('200 OK')) {
         d = d.split('200 OK\n')[1];
+        tempstr = d;
     }
 
     if (d.includes('\nEOS')) {
-        tempjj.shift()(tempstr);
+        tempjj.shift()(tempstr.replace(/^\n/g, ''));
         tempstr = "";
     }
 });
