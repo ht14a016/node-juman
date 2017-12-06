@@ -16,7 +16,5 @@
     "url": "https://github.com/ht14a022/node-juman/issues"
   },
   "homepage": "https://github.com/ht14a022/node-juman#readme",
-  "dependencies": {
-    "iconv-lite": "^0.4.19"
-  }
+  "dependencies": {}
 }

@@ -1,13 +1,12 @@
 "use strict";
 const net = require('net');
-const iconv = require('iconv-lite');
 
 const client = new net.Socket();
 
 let tempjj = [];
 
-client.on('data', data => {
-    let d = iconv.decode(data, "Shift_JIS");
+client.on('data', chank => {
+    let d = chank.toString();
     if (d.match(/200 OK/)) {
         d = d.split('200 OK\n')[1];
     }
@@ -26,7 +25,7 @@ module.exports = {
         });
     }),
     run: str => new Promise((resolve, reject) => {
-        client.write(iconv.encode(`${str}\n`, "Shift_JIS"));
+        client.write(`${str}\n`);
         tempjj.push(resolve);
     })
 };
